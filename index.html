@@ -98,12 +98,56 @@
 <li><strong>first-letter</strong></li>
 <li><strong>selection</strong></li>
 </ul>
-<p>好的，咱来一个个说明，先说重要的两个before和after。</p>
-<h3 id="1-伪元素before"><a href="#1-伪元素before" class="headerlink" title="1.伪元素before"></a>1.伪元素before</h3>
+<p>好的，咱来一个个说明。</p>
+<h3 id="1-伪元素before和after"><a href="#1-伪元素before和after" class="headerlink" title="1.伪元素before和after"></a>1.伪元素before和after</h3><p>这两个一起说明呢是因为除了一前一后，没有其他的区别。</p>
+<ul>
+<li><strong>before</strong>是在元素内容前面插入新的内容</li>
+<li><strong>after</strong>是在元素内容后面插入新的内容。</li>
+</ul>
+<p>这两个伪元素都是在元素插入新的内容，相当于增加了一个子元素，而且拥有<strong><em>行内标签</em></strong>的特点，由内容撑开宽高的。</p>
+<p>还有请大家千万不要忘记一点：</p>
+<ul>
+<li><strong>一定要加content:””;有内容填写内容，无内容也要写个空在那里，否则呵呵···</strong></li>
+</ul>
+<p>我们来看以下代码：</p>
+<p><img src="../img/before.png" alt=""></p>
+<p>得到的结果如下：</p>
+<p><img src="../img/after.png" alt=""></p>
+<p>我给after加了display:block这个属性，它就有了块标签的特点。</p>
+<p>由上述代码可看出，两个伪元素是插入在元素内容的前后的，而不是这个元素的前后。</p>
+<h3 id="2-first-line和first-letter"><a href="#2-first-line和first-letter" class="headerlink" title="2.first-line和first-letter"></a>2.first-line和first-letter</h3><p>这两个伪元素从字面意思其实就可以看出它们的作用，</p>
+<ul>
+<li><strong>first-line为元素文本的第一行设置特殊样式</strong></li>
+<li><strong>first-letter为元素文本的第一个字符设置特殊样式</strong></li>
+</ul>
+<p>不过他们也有一个要注意的：</p>
+<ul>
+<li><strong>只对块标签有作用</strong></li>
+</ul>
+<p>我们来看代码：<br><img src="../img/first-line.png" alt=""></p>
+<p>运行结果：</p>
+<p><img src="../img/first-letter.png" alt=""></p>
+<p>由代码可看出，他们在行内元素上根本不起作用。</p>
+<h3 id="3-selection"><a href="#3-selection" class="headerlink" title="3.selection"></a>3.selection</h3><p>这个伪元素比较冷门，很少用到，大家稍微了解一下就好。</p>
+<p>我们先来看加上selection前后效果的区别，看了之后，相信就知道它的作用了。</p>
+<p>之前：</p>
+<p><img src="../img/selection.png" alt=""></p>
+<p>之后：</p>
+<p><img src="../img/selafter.png" alt=""></p>
+<p>代码如下：<br><img src="../img/selec.png" alt=""></p>
+<p>看出来了吗？有颜色的地方是用鼠标选中了这些文字，</p>
+<p>OK，那selection的作用就是   <strong>可以设置选中文字时的样式</strong>。</p>
+<p>这个伪元素的注意点是：</p>
+<ul>
+<li><strong>必须用双冒号</strong></li>
+</ul>
+<p>大家应该注意到，用到伪元素时是用双冒号的，其实前几个即使用单冒号也是可以的，只是为了和a的伪类hover、active区分开来，用的是双冒号，但是selection有点不一样，它必须用双冒号。</p>
+<p>今天介绍了这几个伪元素，希望有帮助。</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/05/13/伪元素/" data-id="cio6g6k990006cijxa17d7pii" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/05/13/伪元素/" data-id="cio6jgtmc0001gzjxzm1sxl51" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/伪元素/">伪元素</a></li></ul>
@@ -153,7 +197,7 @@
 <p>CSS代码如下：</p>
 <p><img src="../img/three.png" alt=""></p>
 <h3 id="4-第四种"><a href="#4-第四种" class="headerlink" title="4.第四种"></a>4.第四种</h3><ul>
-<li>用的时弹性盒模型flex</li>
+<li>用的是弹性盒模型flex</li>
 </ul>
 <p>CSS代码如下：</p>
 <p><img src="../img/four.png" alt=""></p>
@@ -164,7 +208,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/05/13/图片水平垂直居中/" data-id="cio6g6k8s0000cijx9mmc5fs7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/05/13/图片水平垂直居中/" data-id="cio6jgtmi0003gzjx3guexldh" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/居中/">居中</a></li></ul>
@@ -228,7 +272,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/05/13/SEO搜索引擎优化/" data-id="cio6g6k8y0001cijxpz99djep" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/05/13/SEO搜索引擎优化/" data-id="cio6jgtm70000gzjxo8iglkl1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SEO/">SEO</a></li></ul>
@@ -287,7 +331,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/05/11/我的第二篇博客/" data-id="cio6g6k960004cijx4bet2275" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/05/11/我的第二篇博客/" data-id="cio6jgtmm0006gzjxuvn8azbr" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li></ul>
@@ -329,7 +373,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/05/11/我的第一篇博客/" data-id="cio6g6k940003cijx7ba2pn8j" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/05/11/我的第一篇博客/" data-id="cio6jgtmk0004gzjxqriggg37" class="article-share-link">Share</a>
       
       
     </footer>

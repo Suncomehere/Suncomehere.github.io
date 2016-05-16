@@ -68,6 +68,103 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-gulp的简单使用" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/05/16/gulp的简单使用/" class="article-date">
+  <time datetime="2016-05-16T09:37:30.000Z" itemprop="datePublished">2016-05-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/16/gulp的简单使用/">gulp的简单使用</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>学习了gulp发现，工作中用第三方工具的好处真的很多啊，今天就简单来讲一下gulp这个工具，概念性的东西在这不多说，直接运用起来。gulp是基于任务的自动构建工具，通过插件配合解决页面压缩、JS合并、CSS文件压缩等等功能，简单又强大。</p>
+<h3 id="一、gulp安装"><a href="#一、gulp安装" class="headerlink" title="一、gulp安装"></a>一、gulp安装</h3><h4 id="先安装node-js"><a href="#先安装node-js" class="headerlink" title="* 先安装node.js"></a>* 先安装node.js</h4><p>gulp是基于Node.js的，所以你需要先安装<a href="https://nodejs.org/en/" target="_blank" rel="external">Node.js</a>,下载安装后，</p>
+<p>在终端命令执行：</p>
+<pre><code>$ node -v
+</code></pre><p>   如果结果出来node版本号，就说明安装成功。</p>
+<h4 id="创建项目文件夹，执行安装gulp命令"><a href="#创建项目文件夹，执行安装gulp命令" class="headerlink" title="* 创建项目文件夹，执行安装gulp命令"></a>* 创建项目文件夹，执行安装gulp命令</h4><p> <strong>· 新建一个文件夹，例如test,在此文件夹下执行以下命令：</strong></p>
+<pre><code>$ npm install -g  gulp    //这是全局安装，去掉-g后就是局部安装。
+</code></pre><p> 最好全局和局部安装命令都执行一次，通常都会这样做，有人说明原因，有兴趣可以去看<a href="http://stackoverflow.com/questions/22115400/why-do-we-need-to-install-gulp-globally-and-locally" target="_blank" rel="external">why do we need to install gulp globally and locally?</a>,大体是因为版本的灵活性，不必太纠结。</p>
+<p>如果出现以下报错，</p>
+<p>  <img src="../img/err.png" alt=""></p>
+<p> 则需要增加权限，执行以下命令：</p>
+<pre><code>$ sudo npm install  gulp
+</code></pre><p> <strong>· 接着执行：</strong></p>
+<pre><code>$ npm init   //进行初始化，建立package.json文件
+</code></pre><p> <strong>· OK之后，接着执行以下命令：</strong></p>
+<pre><code>$  npm install --save-dev gulp    //安装依赖模块，是项目环境
+</code></pre><p> –save-dev 的作用是在安装的时候把gulp写进项目package.json文件的依赖中。</p>
+<h4 id="在根目录新建gulpfile-js文件"><a href="#在根目录新建gulpfile-js文件" class="headerlink" title="*在根目录新建gulpfile.js文件"></a>*在根目录新建gulpfile.js文件</h4><p>  基本上安装插件后任务都是在这个js文件中编写。</p>
+<p>  可以先来一个简单的任务：</p>
+<pre><code>var gulp=require(&apos;gulp&apos;);
+
+gulp.task(&apos;default&apos;,function(){
+
+      console.log(&apos;hello!&apos;)
+
+   })
+</code></pre><h3 id="二、运行gulp"><a href="#二、运行gulp" class="headerlink" title="二、运行gulp"></a>二、运行gulp</h3><pre><code>$ gulp     
+</code></pre><p>  gulp一般都是配合插件使用，接下来借助两个插件为例子。    </p>
+<h4 id="三、gulp-concat插件和gulp-jsmin插件"><a href="#三、gulp-concat插件和gulp-jsmin插件" class="headerlink" title="三、gulp-concat插件和gulp-jsmin插件"></a>三、gulp-concat插件和gulp-jsmin插件</h4><p>  <strong><em>concat</em></strong>是合并插件，</p>
+<p>  <strong><em>jsmin</em></strong>是js文件压缩插件。</p>
+<ul>
+<li><p><strong>安装gulp-concat插件</strong></p>
+<pre><code>$ npm install gulp-concat -save
+</code></pre></li>
+<li><p><strong>安装gulp-jsmin插件</strong></p>
+<pre><code>$ npm install gulp-jsmin -save
+</code></pre></li>
+</ul>
+<p>  新建一个js文件夹，里面建两个js文件a.js和b.js，分别写一些函数。目录，文件如下：<br> <img src="../img/ab.png" alt=""></p>
+<p> 之后就可以在gulpfile.js中写任务了：</p>
+<p> <strong>–合并任务：将a.js和b.js的内容合并并生成一个新的new.js文件；</strong></p>
+<p> 代码如下：</p>
+<p> <img src="../img/concat.png" alt=""></p>
+<p> 相关gulp语法可以参考<a href="http://www.gulpjs.com.cn/docs/api/" target="_blank" rel="external">GulpAPI文档</a>,代码的意思就是gulp.src取js文件下的所有js文件pipe输出后concat合并成new.js文件，pipe输出gulp.dest放在js文件夹下。</p>
+<p> 运行一下gulp:</p>
+<pre><code>$ gulp
+</code></pre><p>结果就出来了</p>
+<p> <img src="../img/new.png" alt=""></p>
+<p>js文件夹里新增了一个new.js文件，而且包含a.js和b.js的内容，这就是合并插件的作用。</p>
+<p>那压缩呢，接下来创建一个压缩任务</p>
+<p><strong>–压缩任务：将new.js压缩后生成新的js文件放在新建的dist文件夹下</strong></p>
+<p>在gulpfile.js中创建任务：</p>
+<p> <img src="../img/jsmin.png" alt=""></p>
+<p>运行这个任务：</p>
+<pre><code>$ gulp script
+</code></pre><p>结果：</p>
+<p> <img src="../img/min.png" alt=""></p>
+<p>结果是新建了一个dist文件夹，压缩后的new.js在这个文件夹下。</p>
+<p>两个插件例子已经介绍结束，其他的插件大家可以自己去发现去挖掘，看它们可以在什么问题上可以帮助你。Bye!</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/05/16/gulp的简单使用/" data-id="cioa1azx60000kajxc0ehkdk2" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gulp/">gulp</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-伪元素" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/05/13/伪元素/" class="article-date">
@@ -102,52 +199,16 @@
 <h3 id="1-伪元素before和after"><a href="#1-伪元素before和after" class="headerlink" title="1.伪元素before和after"></a>1.伪元素before和after</h3><p>这两个一起说明呢是因为除了一前一后，没有其他的区别。</p>
 <ul>
 <li><strong>before</strong>是在元素内容前面插入新的内容</li>
-<li><strong>after</strong>是在元素内容后面插入新的内容。</li>
-</ul>
-<p>这两个伪元素都是在元素插入新的内容，相当于增加了一个子元素，而且拥有<strong><em>行内标签</em></strong>的特点，由内容撑开宽高的。</p>
-<p>还有请大家千万不要忘记一点：</p>
-<ul>
-<li><strong>一定要加content:””;有内容填写内容，无内容也要写个空在那里，否则呵呵···</strong></li>
-</ul>
-<p>我们来看以下代码：</p>
-<p><img src="../img/before.png" alt=""></p>
-<p>得到的结果如下：</p>
-<p><img src="../img/after.png" alt=""></p>
-<p>我给after加了display:block这个属性，它就有了块标签的特点。</p>
-<p>由上述代码可看出，两个伪元素是插入在元素内容的前后的，而不是这个元素的前后。</p>
-<h3 id="2-first-line和first-letter"><a href="#2-first-line和first-letter" class="headerlink" title="2.first-line和first-letter"></a>2.first-line和first-letter</h3><p>这两个伪元素从字面意思其实就可以看出它们的作用，</p>
-<ul>
-<li><strong>first-line为元素文本的第一行设置特殊样式</strong></li>
-<li><strong>first-letter为元素文本的第一个字符设置特殊样式</strong></li>
-</ul>
-<p>不过他们也有一个要注意的：</p>
-<ul>
-<li><strong>只对块标签有作用</strong></li>
-</ul>
-<p>我们来看代码：<br><img src="../img/first-line.png" alt=""></p>
-<p>运行结果：</p>
-<p><img src="../img/first-letter.png" alt=""></p>
-<p>由代码可看出，他们在行内元素上根本不起作用。</p>
-<h3 id="3-selection"><a href="#3-selection" class="headerlink" title="3.selection"></a>3.selection</h3><p>这个伪元素比较冷门，很少用到，大家稍微了解一下就好。</p>
-<p>我们先来看加上selection前后效果的区别，看了之后，相信就知道它的作用了。</p>
-<p>之前：</p>
-<p><img src="../img/selection.png" alt=""></p>
-<p>之后：</p>
-<p><img src="../img/selafter.png" alt=""></p>
-<p>代码如下：<br><img src="../img/selec.png" alt=""></p>
-<p>看出来了吗？有颜色的地方是用鼠标选中了这些文字，</p>
-<p>OK，那selection的作用就是   <strong>可以设置选中文字时的样式</strong>。</p>
-<p>这个伪元素的注意点是：</p>
-<ul>
-<li><strong>必须用双冒号</strong></li>
-</ul>
-<p>大家应该注意到，用到伪元素时是用双冒号的，其实前几个即使用单冒号也是可以的，只是为了和a的伪类hover、active区分开来，用的是双冒号，但是selection有点不一样，它必须用双冒号。</p>
-<p>今天介绍了这几个伪元素，希望有帮助。</p>
-
+<li><strong>after</strong>是在元素内容后面插入新的内容。
+        
+          <p class="article-more-link">
+            <a href="/2016/05/13/伪元素/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/05/13/伪元素/" data-id="cio6jgtmc0001gzjxzm1sxl51" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/05/13/伪元素/" data-id="cioa1azxt0005kajxbpa0t9lg" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/伪元素/">伪元素</a></li></ul>
@@ -183,32 +244,15 @@
       
         <p><strong>如何使未知大小的图片水平垂直居中</strong></p>
 <p>在初学H5CSS的时候应该都会遇到这个问题，我在学习中也知道了几种方法，在这里列举一下。<br>假如现在有一个div，里面有一个img, html代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">	&lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">	&lt;title&gt;index&lt;/title&gt;</span><br><span class="line">	&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;index.css&quot;&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">   &lt;div class=&quot;div&quot;&gt;</span><br><span class="line"></span><br><span class="line">   	  &lt;img src=&quot;sun/img/duright6.png&quot;&gt;</span><br><span class="line">      </span><br><span class="line">   &lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
-<h3 id="1-第一种"><a href="#1-第一种" class="headerlink" title="1.第一种"></a>1.第一种</h3><ul>
-<li><p>用到display:table-cell和vertical-align: middle这两个属性</p>
-<p>CSS文件代码如下：</p>
-<p><img src="../img/one.png" alt=""></p>
-<h3 id="2-第二种"><a href="#2-第二种" class="headerlink" title="2.第二种"></a>2.第二种</h3></li>
-<li><p>用到position的知识</p>
-<p>CSS代码如下：</p>
-<p><img src="../img/two.png" alt=""></p>
-<h3 id="3-第三种"><a href="#3-第三种" class="headerlink" title="3.第三种"></a>3.第三种</h3><ul>
-<li>用到的仍然是position</li>
-</ul>
-<p>CSS代码如下：</p>
-<p><img src="../img/three.png" alt=""></p>
-<h3 id="4-第四种"><a href="#4-第四种" class="headerlink" title="4.第四种"></a>4.第四种</h3><ul>
-<li>用的是弹性盒模型flex</li>
-</ul>
-<p>CSS代码如下：</p>
-<p><img src="../img/four.png" alt=""></p>
-</li>
-</ul>
-<p><strong>到目前，发现有这四种方法，虽然都可以实现图片水平垂直居中，但是一般情况尽量用前两种，后两种用的人很少，可能是存在未知的bug吧，这个我也不知道了。</strong></p>
-
+        
+          <p class="article-more-link">
+            <a href="/2016/05/13/图片水平垂直居中/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/05/13/图片水平垂直居中/" data-id="cio6jgtmi0003gzjx3guexldh" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/05/13/图片水平垂直居中/" data-id="cioa1azxx0009kajxk1je2uoe" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/居中/">居中</a></li></ul>
@@ -246,33 +290,15 @@
 <p>那有哪些东西可以影响网站的排名呢？</p>
 <h3 id="1-首先是title-就是一个网页的标题。"><a href="#1-首先是title-就是一个网页的标题。" class="headerlink" title="1.首先是title,就是一个网页的标题。"></a>1.首先是title,就是一个网页的标题。</h3><p>  在一个网页的代码基础结构中有title标签,要想提高排名，标题中包含关键词的作用不言而喻，就像一篇文章主要写的是什么可以从文章标题中看出来的。</p>
   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">  &lt;html lang=<span class="string">"en"</span>&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line"> &lt;meta charset=<span class="string">"UTF-8"</span>&gt;</span><br><span class="line"> &lt;title&gt;网页标题&lt;/title&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">	</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="2-另外一个重要的标签就是meta标签。"><a href="#2-另外一个重要的标签就是meta标签。" class="headerlink" title="2.另外一个重要的标签就是meta标签。"></a>2.另外一个重要的标签就是meta标签。</h3><p>从上面代码中可以看出网页的基础代码也包含meta这个标签，那它在SEO上又有怎样的作用呢？接下来我们看一下meta标签的一些属性。</p>
- <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=<span class="string">"en"</span>&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta charset=<span class="string">"UTF-8"</span>&gt;</span><br><span class="line">&lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">&lt;meta name=<span class="string">"keywords"</span> content=<span class="string">"关键字1，关键字2，关键字3"</span>&gt;</span><br><span class="line">&lt;meta name=<span class="string">"description"</span> content=<span class="string">"描述语句"</span>&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">	</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p><strong>keywords</strong> 关键词</p>
-<p>  这个属性相信明眼人一看就懂，当你想搜什么东西的时候输入的不就是关键词嘛，那关键词写的越多越好吗？当然···不是，什么事都有一个度，最好设置10个左右。</p>
-<p>  总会有些人自以为聪明，投机取巧的把关键词设置的和文章内容差的不止有十万八千里，那怎么办，搜索引擎就被他们玩弄了吗？</p>
-<p>  NO,为了不让这些人得逞，所以这个属性并不起决定性作用，只是有一定的参考价值。</p>
-</li>
-<li><p><strong>decription</strong> 描述</p>
-<p> 这个属性在SEO上算是起到比较重要的作用，写描述语句的时候尽量包含多的关键词，写的好不好看你的语文功底啦。</p>
-</li>
-</ul>
-<h3 id="3-有强调语义的标签"><a href="#3-有强调语义的标签" class="headerlink" title="3.有强调语义的标签"></a>3.有强调语义的标签</h3><p>有强调作用的一些标签在搜索引擎优化上也有一定的作用。</p>
-<ul>
-<li><strong>h1~h6标签</strong>–标题类标签</li>
-<li><strong>strong标签</strong>–字体加粗</li>
-<li><p><strong>em标签</strong>–斜体</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;h1&gt;标题类标签&lt;/h1&gt;</span><br><span class="line">&lt;strong&gt;字体加粗&lt;/stong&gt;</span><br><span class="line">&lt;em&gt;斜体&lt;/em&gt;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p> 那有人说啦，“我把文章里的关键字都用强调标签包裹起来”，别做梦啦，规定整个网页中对于关键词的强调不能超过7次。</p>
-<p> 好啦，关于SEO搜索引擎优化的基础知识到此为止了，这里只是浅谈，你想深究，请转场地。</p>
-
+        
+          <p class="article-more-link">
+            <a href="/2016/05/13/SEO搜索引擎优化/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/05/13/SEO搜索引擎优化/" data-id="cio6jgtm70000gzjxo8iglkl1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/05/13/SEO搜索引擎优化/" data-id="cioa1azxw0007kajxcvt2jbo3" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SEO/">SEO</a></li></ul>
@@ -309,7 +335,7 @@
         <h2 id="1-Hexo介绍"><a href="#1-Hexo介绍" class="headerlink" title="1.Hexo介绍"></a>1.Hexo介绍</h2><p>Hexo是一个基于Node的静态博客框架。通过它我们可以快速创建自己的博客，只需要几条命令即可。发布博客，这里讲解的时部署在github上面，不仅省去服务器成本，还可以减少很多麻烦事。接下来会介绍Hexo静态博客的搭建和发布方法。</p>
 <h2 id="2-Hexo安装"><a href="#2-Hexo安装" class="headerlink" title="2.Hexo安装"></a>2.Hexo安装</h2><p>安装Hexo之前，你需要知道准备什么。</p>
 <ul>
-<li><p>下载安装 Node.js。<a href="https://nodejs.org/en/" target="_blank" rel="external">Node.js下载地址</a></p>
+<li><p>下载安装 Node.js。<a href="https://nodejs.org/en/">Node.js下载地址</a></p>
 <p>这个下载很容易，直接进入下载地址，点击下载建议版本就OK了。</p>
 </li>
 <li><p>下载安装 npm。</p>
@@ -319,19 +345,15 @@
 <li><p>安装Git。(安装Xcode就自带有Git了)</p>
 </li>
 <li><p>申请GitHub。</p>
-</li>
-</ul>
-<h2 id="3-Hexo搭建步骤"><a href="#3-Hexo搭建步骤" class="headerlink" title="3.Hexo搭建步骤"></a>3.Hexo搭建步骤</h2><p>   环境和工具都准备好了之后，开始搭建博客。</p>
-<p><strong>1.新建一个文件夹用于存放相关搭建博客的文件，例如blog。</strong></p>
-<p><strong>2.在终端中执行以下命令 </strong>–安装hexo</p>
-<pre><code>$ sodo npm install -g hexo
-</code></pre><p><strong>3.执行以下命令</strong>–初始化hexo</p>
-<pre><code>$ hexo init
-</code></pre>
+        
+          <p class="article-more-link">
+            <a href="/2016/05/11/我的第二篇博客/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/05/11/我的第二篇博客/" data-id="cio6jgtmm0006gzjxuvn8azbr" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/05/11/我的第二篇博客/" data-id="cioa1azxr0004kajxytnu2ajd" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li></ul>
@@ -373,7 +395,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/05/11/我的第一篇博客/" data-id="cio6jgtmk0004gzjxqriggg37" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/05/11/我的第一篇博客/" data-id="cioa1azxd0002kajxdxz1fx22" class="article-share-link">Share</a>
       
       
     </footer>
@@ -395,7 +417,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SEO/">SEO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/伪元素/">伪元素</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/居中/">居中</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SEO/">SEO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gulp/">gulp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/伪元素/">伪元素</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/居中/">居中</a></li></ul>
     </div>
   </div>
 
@@ -418,6 +440,10 @@
       <ul>
         
           <li>
+            <a href="/2016/05/16/gulp的简单使用/">gulp的简单使用</a>
+          </li>
+        
+          <li>
             <a href="/2016/05/13/伪元素/">伪元素</a>
           </li>
         
@@ -433,14 +459,19 @@
             <a href="/2016/05/11/我的第二篇博客/">Hexo博客搭建</a>
           </li>
         
-          <li>
-            <a href="/2016/05/11/我的第一篇博客/">热爱生活！新的开始！</a>
-          </li>
-        
       </ul>
     </div>
   </div>
 
+  
+    <div class="widget tag">
+<h3 class="title">友情链接</h3>
+<ul class="entry">
+<li><a href="http://gongmingzhi.github.io/" title="HEISENBERG">HEISENBERG</a></li>
+<li><a href="http://lcsoul.github.io//" title="Hexo博客">随遇而安 前端技术交流</a></li>
+<li><a href="http://crackerme.github.io" title="Hexo博客">爱尚轻博客</a></li>
+</ul>
+</div>
   
 </aside>
         

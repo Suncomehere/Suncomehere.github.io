@@ -17,20 +17,20 @@ $ node -v">
 一、gulp安装* 先安装node.jsgulp是基于Node.js的，所以你需要先安装Node.js,下载安装后，
 在终端命令执行：
 $ node -v">
-<meta property="og:image" content="http://yoursite.com/../img/err.png">
-<meta property="og:image" content="http://yoursite.com/../img/ab.png">
-<meta property="og:image" content="http://yoursite.com/../img/concat.png">
-<meta property="og:image" content="http://yoursite.com/../img/new.png">
-<meta property="og:image" content="http://yoursite.com/../img/jsmin.png">
-<meta property="og:image" content="http://yoursite.com/../img/min.png">
-<meta property="og:updated_time" content="2016-05-16T13:18:06.000Z">
+<meta property="og:image" content="https://github.com/Suncomehere/Suncomehere.github.io/blob/master/img/err.png?raw=true">
+<meta property="og:image" content="https://github.com/Suncomehere/Suncomehere.github.io/blob/master/img/ab.png?raw=true">
+<meta property="og:image" content="https://github.com/Suncomehere/Suncomehere.github.io/blob/master/img/concat.png?raw=true">
+<meta property="og:image" content="https://github.com/Suncomehere/Suncomehere.github.io/blob/master/img/new.png?raw=true">
+<meta property="og:image" content="https://github.com/Suncomehere/Suncomehere.github.io/blob/master/img/jsmin.png?raw=true">
+<meta property="og:image" content="https://github.com/Suncomehere/Suncomehere.github.io/blob/master/img/min.png?raw=true">
+<meta property="og:updated_time" content="2016-05-18T03:57:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="gulp的简单使用">
 <meta name="twitter:description" content="学习了gulp发现，工作中用第三方工具的好处真的很多啊，今天就简单来讲一下gulp这个工具，概念性的东西在这不多说，直接运用起来。gulp是基于任务的自动构建工具，通过插件配合解决页面压缩、JS合并、CSS文件压缩等等功能，简单又强大。
 一、gulp安装* 先安装node.jsgulp是基于Node.js的，所以你需要先安装Node.js,下载安装后，
 在终端命令执行：
 $ node -v">
-<meta name="twitter:image" content="http://yoursite.com/../img/err.png">
+<meta name="twitter:image" content="https://github.com/Suncomehere/Suncomehere.github.io/blob/master/img/err.png?raw=true">
   
     <link rel="alternate" href="/atom.xml" title="Sun的Web地盘" type="application/atom+xml">
   
@@ -116,7 +116,7 @@ $ node -v">
 </code></pre>  <a id="more"></a>
 <p> 最好全局和局部安装命令都执行一次，通常都会这样做，有人说明原因，有兴趣可以去看<a href="http://stackoverflow.com/questions/22115400/why-do-we-need-to-install-gulp-globally-and-locally" target="_blank" rel="external">why do we need to install gulp globally and locally?</a>,大体是因为版本的灵活性，不必太纠结。</p>
 <p>如果出现以下报错，</p>
-<p>  <img src="../img/err.png" alt=""></p>
+<p>  <img src="https://github.com/Suncomehere/Suncomehere.github.io/blob/master/img/err.png?raw=true" alt=""></p>
 <p> 则需要增加权限，执行以下命令：</p>
 <pre><code>$ sudo npm install  gulp
 </code></pre><p> <strong>· 接着执行：</strong></p>
@@ -145,32 +145,32 @@ gulp.task(&apos;default&apos;,function(){
 <pre><code>$ npm install gulp-jsmin -save
 </code></pre></li>
 </ul>
-<p>  新建一个js文件夹，里面建两个js文件a.js和b.js，分别写一些函数。目录，文件如下：<br> <img src="../img/ab.png" alt=""></p>
+<p>  新建一个js文件夹，里面建两个js文件a.js和b.js，分别写一些函数。目录，文件如下：<br> <img src="https://github.com/Suncomehere/Suncomehere.github.io/blob/master/img/ab.png?raw=true" alt=""></p>
 <p> 之后就可以在gulpfile.js中写任务了：</p>
 <p> <strong>–合并任务：将a.js和b.js的内容合并并生成一个新的new.js文件；</strong></p>
 <p> 代码如下：</p>
-<p> <img src="../img/concat.png" alt=""></p>
+<p> <img src="https://github.com/Suncomehere/Suncomehere.github.io/blob/master/img/concat.png?raw=true" alt=""></p>
 <p> 相关gulp语法可以参考<a href="http://www.gulpjs.com.cn/docs/api/" target="_blank" rel="external">GulpAPI文档</a>,代码的意思就是gulp.src取js文件下的所有js文件pipe输出后concat合并成new.js文件，pipe输出gulp.dest放在js文件夹下。</p>
 <p> 运行一下gulp:</p>
 <pre><code>$ gulp
 </code></pre><p>结果就出来了</p>
-<p> <img src="../img/new.png" alt=""></p>
+<p> <img src="https://github.com/Suncomehere/Suncomehere.github.io/blob/master/img/new.png?raw=true" alt=""></p>
 <p>js文件夹里新增了一个new.js文件，而且包含a.js和b.js的内容，这就是合并插件的作用。</p>
 <p>那压缩呢，接下来创建一个压缩任务</p>
 <p><strong>–压缩任务：将new.js压缩后生成新的js文件放在新建的dist文件夹下</strong></p>
 <p>在gulpfile.js中创建任务：</p>
-<p> <img src="../img/jsmin.png" alt=""></p>
+<p> <img src="https://github.com/Suncomehere/Suncomehere.github.io/blob/master/img/jsmin.png?raw=true" alt=""></p>
 <p>运行这个任务：</p>
 <pre><code>$ gulp script
 </code></pre><p>结果：</p>
-<p> <img src="../img/min.png" alt=""></p>
+<p> <img src="https://github.com/Suncomehere/Suncomehere.github.io/blob/master/img/min.png?raw=true" alt=""></p>
 <p>结果是新建了一个dist文件夹，压缩后的new.js在这个文件夹下。</p>
 <p>两个插件例子已经介绍结束，其他的插件大家可以自己去发现去挖掘，看它们可以在什么问题上可以帮助你。Bye!</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/05/16/gulp的简单使用/" data-id="ciobhjjxe00034hjxqngtb00m" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/05/16/gulp的简单使用/" data-id="ciobi3arw00015yjxiewtio5o" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gulp/">gulp</a></li></ul>

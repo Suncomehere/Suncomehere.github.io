@@ -14,7 +14,7 @@
 <meta property="og:description" content="自从前段时间搭建了hexo博客后，一直想增加评论区上去，没评论区这博客写的多没意思啊，所以想着法儿的找办法。从网上也看了很多博主的方法，看的是我一头懵，试来试去不成功，今天算是终于加上去了。所以为了那些和我同样处境的朋友们，在这里就详细介绍下这评论是怎么加上去的，其实成功了之后才发现超简单。
 *hexo默认主题添加多说评论  在这里我为什么讲默认主题landscape呢，因为我就是用的这个主题，其">
 <meta property="og:image" content="https://github.com/Suncomehere/Suncomehere.github.io/blob/master/img/shortname.png?raw=true">
-<meta property="og:updated_time" content="2016-05-18T03:58:37.000Z">
+<meta property="og:updated_time" content="2016-05-18T09:00:41.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo博客默认主题添加多说评论">
 <meta name="twitter:description" content="自从前段时间搭建了hexo博客后，一直想增加评论区上去，没评论区这博客写的多没意思啊，所以想着法儿的找办法。从网上也看了很多博主的方法，看的是我一头懵，试来试去不成功，今天算是终于加上去了。所以为了那些和我同样处境的朋友们，在这里就详细介绍下这评论是怎么加上去的，其实成功了之后才发现超简单。
@@ -106,8 +106,8 @@
 <p>  <img src="https://github.com/Suncomehere/Suncomehere.github.io/blob/master/img/shortname.png?raw=true" alt=""></p>
 <p>  黑色圈住的部分就是你的<span style="color:red">shortname</span>,接下来要用到的，你要记住。</p>
 <p>  如果有些小盆友已经登录过但是又没记住这个，没关系，你可以在<span style="color:red">后台管理</span>的<span style="color:red">设置</span>中看到它。</p>
-<h3 id="2-打开你的博客文件夹根目录下的-config-yml文件"><a href="#2-打开你的博客文件夹根目录下的-config-yml文件" class="headerlink" title="2.打开你的博客文件夹根目录下的_config.yml文件"></a>2.打开你的博客文件夹根目录下的_config.yml文件</h3><p>– <strong>在该文件里添加duoshuo_shortname:你的shortname</strong></p>
-<p>这里就用到了上一步得到的shortname了，放在文件的什么位置都可以，为了方便理解，你最好加在theme的下边一行吧，之后保存。</p>
+<h3 id="2-打开你的博客文件夹根目录下的-config-yml文件"><a href="#2-打开你的博客文件夹根目录下的-config-yml文件" class="headerlink" title="2.打开你的博客文件夹根目录下的_config.yml文件"></a>2.打开你的博客文件夹根目录下的_config.yml文件</h3><p>– <strong>在该文件里添加duoshuo_shortname: 你的shortname</strong></p>
+<p>这里就用到了上一步得到的shortname了，<strong style="color:#904701">冒号后要有空格</strong>，放在文件的什么位置都可以，为了方便理解，你最好加在theme的下边一行吧，之后保存。</p>
 <h3 id="3-打开你的themes-landscape-layout-partial-article-ejs文件"><a href="#3-打开你的themes-landscape-layout-partial-article-ejs文件" class="headerlink" title="3.打开你的themes/landscape/layout/_partial/article.ejs文件"></a>3.打开你的themes/landscape/layout/_partial/article.ejs文件</h3><p>在这个文件里边最下面有一段代码：</p>
 <pre><code>&lt;% if (!index &amp;&amp; post.comments &amp;&amp; config.disqus_shortname){ %&gt;
  &lt;section id=&quot;comments&quot;&gt;
@@ -148,7 +148,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/05/17/hexo博客默认主题添加多说评论/" data-id="ciocmamac0004yzjx2yfzwwnt" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/05/17/hexo博客默认主题添加多说评论/" data-id="ciocmdll60004zjjxt5svz7u8" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>

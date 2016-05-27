@@ -20,7 +20,13 @@
 下载安装 Node.js。Node.js下载地址
 这个下载很容易，直接进入下载地址，点击下载建">
 <meta property="og:image" content="https://github.com/Suncomehere/Suncomehere.github.io/blob/master/img/hexoinit.png?raw=true">
-<meta property="og:updated_time" content="2016-05-18T13:57:54.000Z">
+<meta property="og:image" content="https://github.com/Suncomehere/Suncomehere.github.io/blob/master/img/vim.png?raw=true">
+<meta property="og:image" content="https://github.com/Suncomehere/Suncomehere.github.io/blob/master/img/sshset.png?raw=true">
+<meta property="og:image" content="https://github.com/Suncomehere/Suncomehere.github.io/blob/master/img/newssh.png?raw=true">
+<meta property="og:image" content="https://github.com/Suncomehere/Suncomehere.github.io/blob/master/img/newcangku.png?raw=true">
+<meta property="og:image" content="https://github.com/Suncomehere/Suncomehere.github.io/blob/master/img/cangku.png?raw=true">
+<meta property="og:image" content="https://github.com/Suncomehere/Suncomehere.github.io/blob/master/img/cangkudeploy.png?raw=true">
+<meta property="og:updated_time" content="2016-05-27T03:34:41.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo博客搭建">
 <meta name="twitter:description" content="1.Hexo介绍Hexo是一个基于Node的静态博客框架。通过它我们可以快速创建自己的博客，只需要几条命令即可。发布博客，这里讲解的时部署在github上面，不仅省去服务器成本，还可以减少很多麻烦事。接下来会介绍Hexo静态博客的搭建和发布方法。
@@ -137,25 +143,59 @@
 </code></pre><p>之后文件里会有一些文件，目录如下：</p>
 <p>   <img src="https://github.com/Suncomehere/Suncomehere.github.io/blob/master/img/hexoinit.png?raw=true" alt=""></p>
 <p><strong>4.修改blog目录下_config.yml文件里的一些全局配置</strong></p>
-<p>   先修改以下几个内容<br>   <pre><br>   title: <span style="color:#904712">标题</span><br>   subtitle: <span style="color:#904712">副标题</span><br>   description:<br>   author: <span style="color:#904712">你的名字</span><br>   language: <span style="color:#904712">zh-CN</span><br>   </pre></p>
+<p>   先修改以下几个内容<br>   <pre><br>   title: <span style="color:red">标题</span><br>   subtitle: <span style="color:red">副标题</span><br>   description:<br>   author: <span style="color:red">你的名字</span><br>   language: <span style="color:red">zh-CN</span><br>   </pre></p>
 <p>红色部分是你要修改的几个地方。</p>
 <p><strong>5.新建一篇博客</strong></p>
 <p>执行命令：</p>
 <pre><code>$ hexo new &quot;第一篇博客的标题&quot;
-</code></pre><p>之后你就会在文件目录中source/_post下看到你的第一篇博客的文件，是.md格式。</p>
+</code></pre><p>之后你就会在文件目录中source/_post下看到你的第一篇博客的文件，是.md格式,需要下载<a href="http://25.io/mou/" target="_blank" rel="external">MarkDown</a>软件。</p>
 <p>直接双击打开这个md文件你就可以编辑你的第一篇博客了，记得稍微学习下md语法，挺简单的。</p>
-<p><strong>6.生成静态页面</strong><br>执行命令：</p>
-<pre><code>$ hexo g
-</code></pre><p><strong>7.启动本地服务</strong><br>命令：</p>
+<p><strong>6.启动本地服务</strong><br>命令：</p>
 <pre><code>$ hexo s
 </code></pre><p>  回车后会出现两行字母，复制其中的<strong><a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a></strong>在浏览器网址栏中，就可以看见你的本地博客页面了。</p>
 <h2 id="4-hexo博客发布"><a href="#4-hexo博客发布" class="headerlink" title="4.hexo博客发布"></a>4.hexo博客发布</h2><p>上边hexo本地搭建好了，但是我们的博客是要在线上发布的，总不能只当本地的笔记使吧，所以接着就要说如何发布在github上了。</p>
-<p>** 1.申请的github账号登上去，</p>
+<p><strong> 1.申请的github账号登上去，新增ssh </strong></p>
+<p>ssh的作用呢是为了博客上传内容时不需要每次都输入用户名和密码。</p>
+<ul>
+<li><p>在终端输入命令</p>
+<pre><code>$ ssh-keygen
+</code></pre></li>
+<li><p>之后三次回车会生成认证密钥对，接下来将认证所需的密钥放在文件中：</p>
+<pre><code>$ vim ~/.ssh/id_rsa.pub
+</code></pre></li>
+<li><p>按回车之后会生成一段代码，如下图所示:</p>
+<p><img src="https://github.com/Suncomehere/Suncomehere.github.io/blob/master/img/vim.png?raw=true" alt=""></p>
+</li>
+<li><p>在你的github页面上新增ssh,按照以下步骤：</p>
+</li>
+</ul>
+<p><img src="https://github.com/Suncomehere/Suncomehere.github.io/blob/master/img/sshset.png?raw=true" alt=""></p>
+<p><img src="https://github.com/Suncomehere/Suncomehere.github.io/blob/master/img/newssh.png?raw=true" alt=""></p>
+<p>在第三个步骤填写tltle的时候，命名需要以ssh开头，这一点要注意。</p>
+<p>第四个步骤是将上面生成的那段代码粘贴在key的区域，然后确定，ssh就新增好了。</p>
+<p><strong> 2.创建博客发布仓库 </strong><br>  如下图操作：<br> <img src="https://github.com/Suncomehere/Suncomehere.github.io/blob/master/img/newcangku.png?raw=true" alt=""></p>
+<p> <img src="https://github.com/Suncomehere/Suncomehere.github.io/blob/master/img/cangku.png?raw=true" alt=""></p>
+<p> 这个仓库名必须是你的用户名后边带上.github.io。<br> 打开这个仓库，复制红色圈内的网址。</p>
+<p> <strong> 3.修改博客文件夹下_config.yml文件里边上传部分设置 </strong></p>
+<p> 改成下图这样，红色线部分是你复制的仓库地址：</p>
+<p> <img src="https://github.com/Suncomehere/Suncomehere.github.io/blob/master/img/cangkudeploy.png?raw=true" alt=""></p>
+<p>  <strong>4.执行几个命令，博客发布完成。</strong></p>
+<p>  设置你的用户名称和e-mail地址。这是非常重要的，因为每次Git提交都会使用该信息。它被永远的嵌入到了你的提交中：</p>
+<pre><code>$ git config —global user.name &quot;你的用户名&quot;
+$ git config —global user.email  &quot;你的email&quot;
+</code></pre><p>生成静态页面：</p>
+<pre><code>$ hexo g
+</code></pre><p>在Hexo 3.0版本后deploy git 被分开的，所以需要安装，安装命令如下:    </p>
+<pre><code>$ npm install hexo-deployer-git --save
+</code></pre><p>将hexo部署到github</p>
+<pre><code>$ hexo d
+</code></pre><p>到这基本上就完成了，在浏览器网址栏输入你的用户名.github.io，就是你的博客对应的仓库名称，之后就可以看见你的博客了，别人也可以通过这个网址看到你的博客，发布成功！</p>
+<p>以后每次博客变更发布，只需要执行hexo g和hexo d就可以了。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/05/11/hexo博客搭建/" data-id="ciocxonte0001m4jx4e59c6wv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/05/11/hexo博客搭建/" data-id="ciop6e8sx0000jrjxuemrqsnx" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li></ul>
